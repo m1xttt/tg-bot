@@ -38,6 +38,13 @@ async def send_first_of_day(context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = context.job.chat_id
     await context.bot.send_message(chat_id=chat_id, text=text)
 
+def get_days_to_new_year() -> int:
+    now = dt.datetime.now(ZoneInfo(TZ_NAME))
+    next_year = now.year + 1
+    new_year_date = dt.datetime(next_year, 1, 1, tzinfo=ZoneInfo(TZ_NAME))
+
+    delta = new_year_date - now
+    return delta.days
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_id = update.effective_chat.id
@@ -53,8 +60,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         chat_id = chat_id,
     )
 
+    days_left = get_days_to_new_year()
+
     await update.message.reply_text(
-        "Заебал уже"
+        f"Кстати, до Нового года осталось {days_left} дней!"
     )
 
 
