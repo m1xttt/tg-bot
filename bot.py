@@ -54,7 +54,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     )
 
     await update.message.reply_text(
-        "Короче я обленился так что поздравления с новым днем будет присылать бот"
+        "Заебал уже"
     )
 
 
