@@ -63,7 +63,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     days_left = get_days_to_new_year()
 
     await update.message.reply_text(
-        f"Кстати, до Нового года осталось {days_left} дней!"
+        f"до Нового года осталось {days_left} дней"
     )
 
 
